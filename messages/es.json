@@ -1,0 +1,82 @@
+{
+  "Nav": {
+    "services": "Servicios",
+    "insights": "Insights",
+    "contact": "Contacto"
+  },
+  "Hero": {
+    "headline": "Tus sistemas. Tus datos. Operaciones más inteligentes.",
+    "subheadline": "Construimos agentes de IA que trabajan con tu infraestructura actual — conectando ERPs, CRMs y datos operativos para automatizar lo que te está frenando.",
+    "ctaPrimary": "Habla con nosotros gratis",
+    "ctaSecondary": "Ver qué hacemos"
+  },
+  "Problem": {
+    "title": "¿Te suena familiar?",
+    "items": [
+      "Tu equipo pierde horas buscando información repartida en 4 sistemas distintos",
+      "Los incidentes tardan demasiado en diagnosticarse porque los datos están dispersos",
+      "Tienes los datos. Solo que no puedes actuar sobre ellos lo suficientemente rápido."
+    ]
+  },
+  "Services": {
+    "title": "Qué hacemos",
+    "diagnosis": {
+      "name": "Diagnóstico Estratégico de IA",
+      "desc": "Pasamos 2-3 semanas dentro de tus operaciones, mapeamos tus sistemas e identificamos exactamente dónde los agentes de IA tendrán mayor impacto. Obtienes un plan concreto, no un informe genérico.",
+      "price": "Desde $5.000 AUD · 2–3 semanas"
+    },
+    "implementation": {
+      "name": "Implementación de Agentes",
+      "desc": "Construimos y desplegamos agentes de IA adaptados a tus sistemas. Desde agentes de soporte al cliente que consultan tu ERP en tiempo real, hasta agentes NOC que correlacionan alertas y detectan fallos antes que tu equipo.",
+      "price": "Desde $20.000 AUD · 6–12 semanas"
+    },
+    "retainer": {
+      "name": "Colaboración Continua",
+      "desc": "Después del despliegue, seguimos contigo. Mejoramos los agentes, incorporamos nuevos casos de uso y nos aseguramos de que el sistema siga funcionando conforme evoluciona tu negocio.",
+      "price": "Desde $3.000 AUD/mes"
+    }
+  },
+  "CaseStudies": {
+    "title": "Diseñado para operaciones complejas",
+    "items": [
+      {
+        "title": "Telecomunicaciones / ISPs",
+        "body": "Un cliente llama. El agente lo identifica al instante, consulta su contrato en el ERP, revisa los tickets abiertos y cruza el estado de la red en su zona — todo antes de que un agente humano coja el teléfono."
+      },
+      {
+        "title": "NOC / Infraestructura",
+        "body": "En lugar de correlacionar manualmente alertas en 6 dashboards, un agente de IA monitoriza la telemetría en tiempo real, detecta anomalías y presenta la causa probable con datos de respaldo."
+      },
+      {
+        "title": "Operaciones Internas",
+        "body": "Presupuestos, contratos, aprobaciones, onboarding — el papeleo que lo ralentiza todo. Agentes que procesan documentos, extraen datos relevantes y los enrutan al lugar correcto automáticamente."
+      },
+      {
+        "title": "Contact Centers",
+        "body": "Agentes de IA que gestionan consultas de nivel 1 a escala, escalan inteligentemente a agentes humanos con el contexto ya cargado, y aprenden de cada interacción."
+      }
+    ]
+  },
+  "About": {
+    "title": "Por qué Valkeron",
+    "body": "La mayoría de consultoras de IA te venden un chatbot y lo llaman transformación.\n\nNosotros venimos de la infraestructura. Llevamos años construyendo y operando sistemas complejos — redes, arquitectura cloud, software empresarial a escala. Sabemos lo que hace falta para que las cosas funcionen en producción, no solo en una demo.\n\nValkeron nació con un principio claro: la IA debe trabajar con lo que ya tienes. No reemplazarlo. No requerir un proyecto de migración de 12 meses. Solo conectar, automatizar y entregar resultados.\n\nTrabajamos con un número reducido de clientes a la vez. Eso significa acceso directo a las personas que construyen tu solución — y un socio que entiende tu negocio antes de escribir una sola línea de código."
+  },
+  "Contact": {
+    "title": "¿Listo para ver lo que es posible?",
+    "subtitle": "Reserva una llamada de 30 minutos. Te diremos con honestidad si los agentes de IA tienen sentido para tu operación — y si es así, por dónde empezar exactamente.",
+    "cta": "Reservar llamada gratuita",
+    "fields": {
+      "name": "Nombre",
+      "company": "Empresa",
+      "email": "Email",
+      "challenge": "¿Cuál es el mayor reto operativo al que te enfrentas ahora mismo?"
+    }
+  },
+  "Footer": {
+    "tagline": "Valkeron · Implementación de IA · Sídney, Australia"
+  },
+  "Blog": {
+    "title": "Insights",
+    "description": "Reflexiones prácticas sobre implementación de IA, automatización y lo que realmente funciona en el mundo real."
+  }
+}

@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f7fb;
+  --foreground: #102033;
+  --card: #fbfdff;
+  --card-foreground: #102033;
+  --popover: #fbfdff;
+  --popover-foreground: #102033;
+  --primary: #0a1628;
+  --primary-foreground: #eef6fb;
+  --secondary: #dceaf2;
+  --secondary-foreground: #0f2234;
+  --muted: #d7e3ec;
+  --muted-foreground: #526173;
+  --accent: #00b4d8;
+  --accent-foreground: #072332;
+  --border: #bfd1de;
+  --input: #c6d8e4;
+  --ring: #00b4d8;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: #09121f;
+  --foreground: #edf5fb;
+  --card: #102033;
+  --card-foreground: #edf5fb;
+  --popover: #102033;
+  --popover-foreground: #edf5fb;
+  --primary: #e7f0f7;
+  --primary-foreground: #09121f;
+  --secondary: #12283b;
+  --secondary-foreground: #edf5fb;
+  --muted: #112336;
+  --muted-foreground: #93a9bb;
+  --accent: #00b4d8;
+  --accent-foreground: #072332;
+  --border: #27435c;
+  --input: #27435c;
+  --ring: #00b4d8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-outfit);
+  --color-navy: #0A1628;
+  --color-electric: #00B4D8;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, color-mix(in oklab, var(--accent) 10%, transparent), transparent 30%),
+    linear-gradient(180deg, color-mix(in oklab, var(--background) 92%, white), var(--background));
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top left, color-mix(in oklab, var(--accent) 12%, transparent), transparent 28%),
+    linear-gradient(180deg, color-mix(in oklab, var(--background) 92%, #13283b), var(--background));
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+.container-shell {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+.section-spacing {
+  @apply py-16 sm:py-20 lg:py-28;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.22em] text-accent;
+}
+
+.grid-lines {
+  background-image: linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--border) 40%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
