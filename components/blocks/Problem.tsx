@@ -9,7 +9,7 @@ export async function Problem({locale}: {locale: string}) {
     <section className="section-spacing border-b border-border/70">
       <div className="container-shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
         <div className="space-y-4">
-          <p className="eyebrow">Operational friction</p>
+          <p className="eyebrow">{t('eyebrow')}</p>
           <h2 className="text-3xl font-semibold tracking-[-0.05em] text-primary sm:text-4xl">{t('title')}</h2>
         </div>
         <ul className="space-y-4" role="list">

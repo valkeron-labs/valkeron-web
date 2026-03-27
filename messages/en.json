@@ -8,7 +8,15 @@
     "headline": "Your systems. Your data. Smarter operations.",
     "subheadline": "We build AI agents that work with your existing infrastructure — connecting ERPs, CRMs, and operational data to automate what's slowing you down.",
     "ctaPrimary": "Book a free discovery call",
-    "ctaSecondary": "See what we do"
+    "ctaSecondary": "See what we do",
+    "eyebrow": "Operational AI for the systems you already run",
+    "signalMap": {
+      "title": "Signal map",
+      "erp": "Orders · Contracts",
+      "crm": "Customers · Tickets",
+      "noc": "Alerts · Telemetry",
+      "agents": "Actionable decisions"
+    }
   },
   "Problem": {
     "title": "Sound familiar?",
@@ -16,7 +24,8 @@
       "Your team wastes hours finding information across 4 different systems",
       "Incidents take too long to diagnose because the data is scattered",
       "You have the data. You just can't act on it fast enough."
-    ]
+    ],
+    "eyebrow": "Operational friction"
   },
   "Services": {
     "title": "What we do",
@@ -34,7 +43,8 @@
       "name": "Ongoing Partnership",
       "desc": "After deployment, we stay. We improve the agents, add new use cases, and make sure the system keeps working as your business evolves.",
       "price": "From $3,000 AUD/month"
-    }
+    },
+    "eyebrow": "Engagement model"
   },
   "CaseStudies": {
     "title": "Built for complex operations",
@@ -55,11 +65,13 @@
         "title": "Contact Centers",
         "body": "AI agents that handle tier-1 queries at scale, escalate intelligently to human agents with full context already loaded, and learn from every interaction."
       }
-    ]
+    ],
+    "eyebrow": "Use cases"
   },
   "About": {
     "title": "Why Valkeron",
-    "body": "Most AI consultancies will sell you a chatbot and call it transformation.\n\nWe come from infrastructure. We've spent years building and running complex systems — networks, cloud architecture, enterprise software at scale. We know what it takes to make things actually work in production, not just in a demo.\n\nValkeron was built on a simple principle: AI should work with what you already have. Not replace it. Not require a 12-month migration project. Just connect, automate, and deliver results.\n\nWe work with a small number of clients at a time. That means you get direct access to the people who actually build your solution — and a partner who understands your business before writing a single line of code."
+    "body": "Most AI consultancies will sell you a chatbot and call it transformation.\n\nWe come from infrastructure. We've spent years building and running complex systems — networks, cloud architecture, enterprise software at scale. We know what it takes to make things actually work in production, not just in a demo.\n\nValkeron was built on a simple principle: AI should work with what you already have. Not replace it. Not require a 12-month migration project. Just connect, automate, and deliver results.\n\nWe work with a small number of clients at a time. That means you get direct access to the people who actually build your solution — and a partner who understands your business before writing a single line of code.",
+    "eyebrow": "Why Valkeron"
   },
   "Contact": {
     "title": "Ready to see what's possible?",
@@ -70,7 +82,8 @@
       "company": "Company",
       "email": "Email",
       "challenge": "What's the biggest operational challenge you're facing right now?"
-    }
+    },
+    "eyebrow": "Discovery call"
   },
   "Footer": {
     "tagline": "Valkeron · AI Implementation · Sydney, Australia"

@@ -9,7 +9,7 @@ export async function CaseStudies({locale}: {locale: string}) {
     <section className="section-spacing border-b border-border/70">
       <div className="container-shell space-y-10">
         <div className="space-y-4">
-          <p className="eyebrow">Use cases</p>
+          <p className="eyebrow">{t('eyebrow')}</p>
           <h2 className="text-3xl font-semibold tracking-[-0.05em] text-primary sm:text-4xl">{t('title')}</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">

@@ -15,7 +15,7 @@ export async function Services({locale}: {locale: string}) {
     <section id="services" className="section-spacing border-b border-border/70 scroll-mt-24">
       <div className="container-shell space-y-10">
         <div className="space-y-4">
-          <p className="eyebrow">Engagement model</p>
+          <p className="eyebrow">{t('eyebrow')}</p>
           <h2 className="text-3xl font-semibold tracking-[-0.05em] text-primary sm:text-4xl">{t('title')}</h2>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">

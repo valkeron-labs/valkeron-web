@@ -8,7 +8,15 @@
     "headline": "Tus sistemas. Tus datos. Operaciones más inteligentes.",
     "subheadline": "Construimos agentes de IA que trabajan con tu infraestructura actual — conectando ERPs, CRMs y datos operativos para automatizar lo que te está frenando.",
     "ctaPrimary": "Habla con nosotros gratis",
-    "ctaSecondary": "Ver qué hacemos"
+    "ctaSecondary": "Ver qué hacemos",
+    "eyebrow": "IA operacional para los sistemas que ya tienes",
+    "signalMap": {
+      "title": "Mapa de señales",
+      "erp": "Pedidos · Contratos",
+      "crm": "Clientes · Tickets",
+      "noc": "Alertas · Telemetría",
+      "agents": "Decisiones accionables"
+    }
   },
   "Problem": {
     "title": "¿Te suena familiar?",
@@ -16,7 +24,8 @@
       "Tu equipo pierde horas buscando información repartida en 4 sistemas distintos",
       "Los incidentes tardan demasiado en diagnosticarse porque los datos están dispersos",
       "Tienes los datos. Solo que no puedes actuar sobre ellos lo suficientemente rápido."
-    ]
+    ],
+    "eyebrow": "Fricción operativa"
   },
   "Services": {
     "title": "Qué hacemos",
@@ -34,7 +43,8 @@
       "name": "Colaboración Continua",
       "desc": "Después del despliegue, seguimos contigo. Mejoramos los agentes, incorporamos nuevos casos de uso y nos aseguramos de que el sistema siga funcionando conforme evoluciona tu negocio.",
       "price": "Desde $3.000 AUD/mes"
-    }
+    },
+    "eyebrow": "Modelo de trabajo"
   },
   "CaseStudies": {
     "title": "Diseñado para operaciones complejas",
@@ -55,11 +65,13 @@
         "title": "Contact Centers",
         "body": "Agentes de IA que gestionan consultas de nivel 1 a escala, escalan inteligentemente a agentes humanos con el contexto ya cargado, y aprenden de cada interacción."
       }
-    ]
+    ],
+    "eyebrow": "Casos de uso"
   },
   "About": {
     "title": "Por qué Valkeron",
-    "body": "La mayoría de consultoras de IA te venden un chatbot y lo llaman transformación.\n\nNosotros venimos de la infraestructura. Llevamos años construyendo y operando sistemas complejos — redes, arquitectura cloud, software empresarial a escala. Sabemos lo que hace falta para que las cosas funcionen en producción, no solo en una demo.\n\nValkeron nació con un principio claro: la IA debe trabajar con lo que ya tienes. No reemplazarlo. No requerir un proyecto de migración de 12 meses. Solo conectar, automatizar y entregar resultados.\n\nTrabajamos con un número reducido de clientes a la vez. Eso significa acceso directo a las personas que construyen tu solución — y un socio que entiende tu negocio antes de escribir una sola línea de código."
+    "body": "La mayoría de consultoras de IA te venden un chatbot y lo llaman transformación.\n\nNosotros venimos de la infraestructura. Llevamos años construyendo y operando sistemas complejos — redes, arquitectura cloud, software empresarial a escala. Sabemos lo que hace falta para que las cosas funcionen en producción, no solo en una demo.\n\nValkeron nació con un principio claro: la IA debe trabajar con lo que ya tienes. No reemplazarlo. No requerir un proyecto de migración de 12 meses. Solo conectar, automatizar y entregar resultados.\n\nTrabajamos con un número reducido de clientes a la vez. Eso significa acceso directo a las personas que construyen tu solución — y un socio que entiende tu negocio antes de escribir una sola línea de código.",
+    "eyebrow": "Por qué Valkeron"
   },
   "Contact": {
     "title": "¿Listo para ver lo que es posible?",
@@ -70,7 +82,8 @@
       "company": "Empresa",
       "email": "Email",
       "challenge": "¿Cuál es el mayor reto operativo al que te enfrentas ahora mismo?"
-    }
+    },
+    "eyebrow": "Llamada de descubrimiento"
   },
   "Footer": {
     "tagline": "Valkeron · Implementación de IA · Sídney, Australia"

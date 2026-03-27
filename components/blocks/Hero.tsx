@@ -11,7 +11,7 @@ export async function Hero({locale}: {locale: string}) {
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-50" aria-hidden="true" />
       <div className="container-shell relative grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div className="max-w-3xl space-y-8">
-          <p className="eyebrow">Operational AI for the systems you already run</p>
+          <p className="eyebrow">{t('eyebrow')}</p>
           <div className="space-y-5">
             <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.06em] text-balance text-primary sm:text-6xl lg:text-7xl">{t('headline')}</h1>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">{t('subheadline')}</p>
@@ -27,12 +27,12 @@ export async function Hero({locale}: {locale: string}) {
         </div>
         <aside className="rounded-[1.75rem] border border-border/80 bg-card/80 p-6 shadow-[0_20px_60px_-30px_rgba(10,22,40,0.45)] backdrop-blur-sm">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Signal map</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">{t('signalMap.title')}</p>
             <div className="space-y-3 text-sm text-muted-foreground">
-              <div className="flex items-center justify-between border-b border-border/60 pb-3"><span>ERP</span><span className="text-foreground">Orders · Contracts</span></div>
-              <div className="flex items-center justify-between border-b border-border/60 pb-3"><span>CRM</span><span className="text-foreground">Customers · Tickets</span></div>
-              <div className="flex items-center justify-between border-b border-border/60 pb-3"><span>NOC</span><span className="text-foreground">Alerts · Telemetry</span></div>
-              <div className="flex items-center justify-between"><span>Agents</span><span className="text-foreground">Actionable decisions</span></div>
+              <div className="flex items-center justify-between border-b border-border/60 pb-3"><span>ERP</span><span className="text-foreground">{t('signalMap.erp')}</span></div>
+              <div className="flex items-center justify-between border-b border-border/60 pb-3"><span>CRM</span><span className="text-foreground">{t('signalMap.crm')}</span></div>
+              <div className="flex items-center justify-between border-b border-border/60 pb-3"><span>NOC</span><span className="text-foreground">{t('signalMap.noc')}</span></div>
+              <div className="flex items-center justify-between"><span>Agents</span><span className="text-foreground">{t('signalMap.agents')}</span></div>
             </div>
           </div>
         </aside>

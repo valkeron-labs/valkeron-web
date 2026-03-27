@@ -9,7 +9,7 @@ export async function ContactCTA({locale}: {locale: string}) {
     <section id="contact" className="section-spacing scroll-mt-24">
       <div className="container-shell grid gap-10 rounded-[2rem] border border-border/80 bg-primary px-6 py-10 text-primary-foreground sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:px-10 lg:py-12">
         <div className="space-y-5">
-          <p className="eyebrow text-primary-foreground/70">Discovery call</p>
+          <p className="eyebrow text-primary-foreground/70">{t('eyebrow')}</p>
           <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">{t('title')}</h2>
           <p className="max-w-xl text-base leading-7 text-primary-foreground/82">{t('subtitle')}</p>
           <Button asChild variant="secondary" size="lg">
