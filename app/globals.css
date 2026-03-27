@@ -101,14 +101,26 @@ body {
 }
 
 .grid-lines {
-  background-image: linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--border) 40%, transparent) 1px, transparent 1px);
+  background-image: none;
   background-size: 40px 40px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 100%);
   position: relative;
 }
 
-/* Mouse-reactive grid: thick lines in a radial spot around cursor */
-/* Lives BELOW content (z-index not needed, it's in normal flow behind siblings) */
+/* Base grid — faded vertically via ::before */
+.grid-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--border) 40%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 100%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 100%);
+  pointer-events: none;
+}
+
+/* Mouse-reactive grid: thick lines revealed by radial mask around cursor */
 .grid-lines::after {
   content: '';
   position: absolute;
@@ -117,7 +129,6 @@ body {
     linear-gradient(to right, color-mix(in oklab, var(--border) 100%, transparent) 2px, transparent 2px),
     linear-gradient(to bottom, color-mix(in oklab, var(--border) 80%, transparent) 2px, transparent 2px);
   background-size: 40px 40px;
-  /* Radial mask centered on cursor — uses page-absolute y offset */
   -webkit-mask-image: radial-gradient(
     260px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
     black 0%, transparent 100%
@@ -126,9 +137,6 @@ body {
     260px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
     black 0%, transparent 100%
   );
-  /* Also respect the same vertical fade as parent */
-  -webkit-mask-composite: intersect;
-  mask-composite: intersect;
   opacity: var(--mouse-active, 0);
   transition: opacity 0.4s ease;
   pointer-events: none;
