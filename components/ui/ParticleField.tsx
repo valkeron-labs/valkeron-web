@@ -44,8 +44,8 @@ export function ParticleField({ className }: { className?: string }) {
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
         radius: 0.8 + Math.random() * 1.5,
       }));
     };
@@ -87,7 +87,7 @@ export function ParticleField({ className }: { className?: string }) {
           // mass ~ radius² (area), softened denominator to prevent spikes
           const massA = a.radius * a.radius;
           const massB = b.radius * b.radius;
-          const force = G * massA * massB / (distSq + 400); // softening prevents tight spirals
+          const force = G * massA * massB / (distSq + 80); // low softening — real interaction
 
           // Apply force — heavier particles move less
           a.vx += nx * force / massA;
@@ -110,19 +110,21 @@ export function ParticleField({ className }: { className?: string }) {
           }
         }
 
-        // No damping — conservation of energy, like real space
-
-        // Gentle min speed — just enough to prevent total freeze, low enough to allow orbits
+        // Progressive speed management — no sudden changes
         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        
+        // Nudge if nearly stopped
         if (speed < 0.05) {
           const angle = Math.atan2(p.vy, p.vx) || (Math.random() * Math.PI * 2);
-          p.vx = Math.cos(angle) * 0.05;
-          p.vy = Math.sin(angle) * 0.05;
+          p.vx += Math.cos(angle) * 0.01;
+          p.vy += Math.sin(angle) * 0.01;
         }
-        // Safety net only — prevents browser from choking
-        if (speed > 4) {
-          p.vx = (p.vx / speed) * 4;
-          p.vy = (p.vy / speed) * 4;
+        
+        // Gradual slowdown only at extreme speeds — asymptotic, never instant
+        if (speed > 2.5) {
+          const factor = 1 - (speed - 2.5) * 0.02; // gentle: at speed 3 → 0.99, at speed 5 → 0.95
+          p.vx *= Math.max(factor, 0.92);
+          p.vy *= Math.max(factor, 0.92);
         }
 
         p.x += p.vx;
