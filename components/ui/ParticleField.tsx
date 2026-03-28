@@ -121,10 +121,12 @@ export function ParticleField({ className }: { className?: string }) {
           p.vx = Math.cos(angle) * 0.05;
           p.vy = Math.sin(angle) * 0.05;
         }
-        // Cap max speed to prevent runaways
-        if (speed > 1.2) {
-          p.vx = (p.vx / speed) * 1.2;
-          p.vy = (p.vy / speed) * 1.2;
+        // Soft cap — only damps above threshold, doesn't hard clamp
+        // Allows gravitational slingshots but prevents infinity
+        if (speed > 2) {
+          const damp = 2 / speed;
+          p.vx *= 0.95 + 0.05 * damp;
+          p.vy *= 0.95 + 0.05 * damp;
         }
 
         p.x += p.vx;
