@@ -29,8 +29,7 @@ export function ParticleField({ className }: { className?: string }) {
     let particles: Particle[] = [];
     let mx = -9999, my = -9999;
 
-    // Allow mouse events through to canvas
-    canvas.style.pointerEvents = 'auto';
+    canvas.style.pointerEvents = 'none';
 
     const init = () => {
       const rect = canvas.getBoundingClientRect();
@@ -137,14 +136,15 @@ export function ParticleField({ className }: { className?: string }) {
     init();
     raf = requestAnimationFrame(draw);
 
-    canvas.addEventListener('mousemove', onMove);
-    canvas.addEventListener('mouseleave', onLeave);
+    // Listen on window so events aren't blocked by content above
+    window.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseleave', onLeave);
     window.addEventListener('resize', init);
 
     return () => {
       cancelAnimationFrame(raf);
-      canvas.removeEventListener('mousemove', onMove);
-      canvas.removeEventListener('mouseleave', onLeave);
+      window.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseleave', onLeave);
       window.removeEventListener('resize', init);
     };
   }, []);
