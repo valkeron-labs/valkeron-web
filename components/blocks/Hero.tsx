@@ -8,7 +8,7 @@ export async function Hero({locale}: {locale: string}) {
 
   return (
     <section className="section-spacing relative overflow-hidden border-b border-border/70">
-      {/* Grid lines handled by MouseGlow component globally */}
+      <div className="grid-lines pointer-events-none absolute inset-0 opacity-50" aria-hidden="true" />
       <div className="container-shell relative grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div className="max-w-3xl space-y-8">
           <p className="eyebrow">{t('eyebrow')}</p>

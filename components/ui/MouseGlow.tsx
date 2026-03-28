@@ -18,8 +18,8 @@ export function MouseGlow() {
     const onLeave = () => { active = false; };
 
     const tick = () => {
-      cx += (tx - cx) * 0.1;
-      cy += (ty - cy) * 0.1;
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
       el.style.setProperty('--mx', `${cx}px`);
       el.style.setProperty('--my', `${cy}px`);
       el.style.opacity = active ? '1' : '0';
@@ -40,15 +40,9 @@ export function MouseGlow() {
     <div
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 opacity-0 transition-opacity duration-500"
+      className="pointer-events-none fixed inset-0 z-0 opacity-0 transition-opacity duration-700"
       style={{
-        backgroundImage: [
-          'linear-gradient(to right, color-mix(in oklab, var(--border) 100%, transparent) 2px, transparent 2px)',
-          'linear-gradient(to bottom, color-mix(in oklab, var(--border) 80%, transparent) 2px, transparent 2px)',
-        ].join(', '),
-        backgroundSize: '40px 40px',
-        WebkitMaskImage: 'radial-gradient(280px circle at var(--mx, -999px) var(--my, -999px), black 0%, transparent 100%)',
-        maskImage: 'radial-gradient(280px circle at var(--mx, -999px) var(--my, -999px), black 0%, transparent 100%)',
+        background: 'radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(0,180,216,0.06), transparent 70%)',
       }}
     />
   );
