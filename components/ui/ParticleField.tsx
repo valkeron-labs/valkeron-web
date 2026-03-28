@@ -18,8 +18,9 @@ export function ParticleField({ className }: { className?: string }) {
     let w = 0, h = 0;
     const mouse = { x: -1000, y: -1000 };
 
-    const PARTICLE_COUNT = isMobile ? 60 : 140;
+    const PARTICLE_COUNT = isMobile ? 40 : 100;
     const CONNECT_DIST = isMobile ? 100 : 150;
+    const PEER_ATTRACT = 0.00004; // gentle inter-particle gravity
 
     type Particle = {
       x: number; y: number;
@@ -68,6 +69,7 @@ export function ParticleField({ className }: { className?: string }) {
           const dy = p.y - q.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECT_DIST) {
+            // Draw connection line
             const lineAlpha = (1 - dist / CONNECT_DIST) * 0.12;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -75,6 +77,19 @@ export function ParticleField({ className }: { className?: string }) {
             ctx.strokeStyle = `hsla(210, 70%, 55%, ${lineAlpha})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
+
+            // Gentle inter-particle attraction (proportional to mass)
+            if (dist > p.r + q.r + 3) {
+              const nx = dx / dist;
+              const ny = dy / dist;
+              const massP = p.r * p.r;
+              const massQ = q.r * q.r;
+              const force = PEER_ATTRACT * massP * massQ / (dist * 0.5 + 20);
+              p.vx -= nx * force / massP;
+              p.vy -= ny * force / massP;
+              q.vx += nx * force / massQ;
+              q.vy += ny * force / massQ;
+            }
           }
         }
       }
@@ -119,10 +134,10 @@ export function ParticleField({ className }: { className?: string }) {
         if (pt.y < pt.r) { pt.y = pt.r; pt.vy = Math.abs(pt.vy) * 0.5; }
         if (pt.y > h - pt.r) { pt.y = h - pt.r; pt.vy = -Math.abs(pt.vy) * 0.5; }
 
-        // Outer glow halo
+        // Outer glow halo — subtle
         ctx.beginPath();
-        ctx.arc(pt.x, pt.y, pt.r * 5, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${pt.hue}, 80%, 60%, ${glow * 0.06})`;
+        ctx.arc(pt.x, pt.y, pt.r * 4, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${pt.hue}, 80%, 60%, ${glow * 0.03})`;
         ctx.fill();
 
         // Core particle
@@ -146,7 +161,7 @@ export function ParticleField({ className }: { className?: string }) {
 
     const onResize = () => {
       resize();
-      const target = isMobile ? 60 : 140;
+      const target = isMobile ? 40 : 100;
       while (particles.length < target) particles.push(createParticle());
       while (particles.length > target) particles.pop();
     };
