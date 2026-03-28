@@ -142,7 +142,7 @@ export function ParticleField({ className }: { className?: string }) {
       }
 
       // Lines between close particles
-      const linkDist = isMobile ? 100 : 130;
+      const linkDist = isMobile ? 100 : peerRadius;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
