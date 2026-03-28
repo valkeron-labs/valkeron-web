@@ -1,7 +1,7 @@
 {
   "Nav": {
     "services": "Servicios",
-    "insights": "Insights",
+    "insights": "Artículos",
     "contact": "Contacto"
   },
   "Hero": {
@@ -89,7 +89,7 @@
     "tagline": "Valkeron · Implementación de IA · Sídney, Australia"
   },
   "Blog": {
-    "title": "Insights",
+    "title": "Artículos",
     "description": "Reflexiones prácticas sobre implementación de IA, automatización y lo que realmente funciona en el mundo real."
   }
 }

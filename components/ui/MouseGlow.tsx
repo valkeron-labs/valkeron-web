@@ -40,7 +40,7 @@ export function MouseGlow() {
     <div
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[1] opacity-0 transition-opacity duration-500"
+      className="pointer-events-none fixed inset-0 z-0 opacity-0 transition-opacity duration-500"
       style={{
         backgroundImage: [
           'linear-gradient(to right, color-mix(in oklab, var(--border) 100%, transparent) 2px, transparent 2px)',
