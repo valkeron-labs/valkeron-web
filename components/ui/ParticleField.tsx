@@ -44,8 +44,8 @@ export function ParticleField({ className }: { className?: string }) {
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
         radius: 0.8 + Math.random() * 1.5,
       }));
     };
@@ -55,8 +55,8 @@ export function ParticleField({ className }: { className?: string }) {
 
       const mouseRadius = 160;
       const mouseStrength = 0.0015;
-      const peerRadius = 150;
-      const G = 0.00008; // gravitational constant — mass-proportional
+      const peerRadius = 200;
+      const G = 0.0006; // gravitational constant — visible orbital dynamics
 
       // Inter-particle gravity — force proportional to mass (radius²), orbital dynamics
       for (let i = 0; i < particles.length; i++) {
@@ -87,7 +87,7 @@ export function ParticleField({ className }: { className?: string }) {
           // mass ~ radius² (area), softened denominator to prevent spikes
           const massA = a.radius * a.radius;
           const massB = b.radius * b.radius;
-          const force = G * massA * massB / (distSq + 100); // +100 softening
+          const force = G * massA * massB / (distSq + 400); // softening prevents tight spirals
 
           // Apply force — heavier particles move less
           a.vx += nx * force / massA;
@@ -114,13 +114,17 @@ export function ParticleField({ className }: { className?: string }) {
         p.vx *= 0.999;
         p.vy *= 0.999;
 
-        // Ensure minimum drift speed — particles never go fully static
+        // Gentle min speed — just enough to prevent total freeze, low enough to allow orbits
         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-        const minSpeed = 0.15;
-        if (speed < minSpeed) {
+        if (speed < 0.05) {
           const angle = Math.atan2(p.vy, p.vx) || (Math.random() * Math.PI * 2);
-          p.vx = Math.cos(angle) * minSpeed;
-          p.vy = Math.sin(angle) * minSpeed;
+          p.vx = Math.cos(angle) * 0.05;
+          p.vy = Math.sin(angle) * 0.05;
+        }
+        // Cap max speed to prevent runaways
+        if (speed > 1.2) {
+          p.vx = (p.vx / speed) * 1.2;
+          p.vy = (p.vy / speed) * 1.2;
         }
 
         p.x += p.vx;
