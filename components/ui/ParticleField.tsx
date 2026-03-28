@@ -54,23 +54,34 @@ export function ParticleField({ className }: { className?: string }) {
       ctx.clearRect(0, 0, w, h);
 
       const attractRadius = 160;
-      const attractStrength = 0.004;
+      const attractStrength = 0.0015;
 
       for (const p of particles) {
-        // Mouse attraction
+        // Gentle mouse attraction — capped so close distance doesn't cause burst
         if (mx > 0 && my > 0) {
           const dx = mx - p.x;
           const dy = my - p.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < attractRadius && dist > 1) {
-            p.vx += (dx / dist) * attractStrength;
-            p.vy += (dy / dist) * attractStrength;
+          if (dist < attractRadius && dist > 30) {
+            // Constant gentle pull, not inversely proportional to distance
+            const force = attractStrength * (1 - dist / attractRadius);
+            p.vx += (dx / dist) * force;
+            p.vy += (dy / dist) * force;
           }
         }
 
-        // Light damping — keeps drift alive
-        p.vx *= 0.997;
-        p.vy *= 0.997;
+        // Minimal damping — barely slows, keeps organic drift alive forever
+        p.vx *= 0.999;
+        p.vy *= 0.999;
+
+        // Ensure minimum drift speed — particles never go fully static
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        const minSpeed = 0.15;
+        if (speed < minSpeed) {
+          const angle = Math.atan2(p.vy, p.vx) || (Math.random() * Math.PI * 2);
+          p.vx = Math.cos(angle) * minSpeed;
+          p.vy = Math.sin(angle) * minSpeed;
+        }
 
         p.x += p.vx;
         p.y += p.vy;
