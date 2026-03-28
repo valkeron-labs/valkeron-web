@@ -11,123 +11,143 @@ type Particle = {
 };
 
 const ACCENT_RGB = '0, 180, 216';
-const MOBILE_BREAKPOINT = 768;
 
 export function ParticleField({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) {
-      return;
-    }
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const context = canvas.getContext('2d');
-    if (!context) {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let animationFrame = 0;
-    let width = 0;
-    let height = 0;
-    let particleCount = 0;
+    let raf = 0;
+    let w = 0, h = 0;
     let particles: Particle[] = [];
+    let mx = -9999, my = -9999;
 
-    const createParticle = (): Particle => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * (reducedMotion ? 0.06 : 0.2),
-      vy: (Math.random() - 0.5) * (reducedMotion ? 0.06 : 0.2),
-      radius: 1 + Math.random() * 1.8,
-    });
+    // Allow mouse events through to canvas
+    canvas.style.pointerEvents = 'auto';
 
-    const reset = () => {
+    const init = () => {
       const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      width = rect.width;
-      height = rect.height;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      context.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const dpr = devicePixelRatio || 1;
+      w = rect.width;
+      h = rect.height;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      particleCount = mediaQuery.matches ? 28 : 54;
-      particles = Array.from({length: particleCount}, createParticle);
+      const count = isMobile ? 30 : 65;
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        radius: 0.8 + Math.random() * 1.5,
+      }));
     };
 
     const draw = () => {
-      context.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, w, h);
 
-      for (const particle of particles) {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
+      const attractRadius = 200;
+      const attractStrength = 0.02;
 
-        if (particle.x <= 0 || particle.x >= width) {
-          particle.vx *= -1;
-          particle.x = Math.min(Math.max(particle.x, 0), width);
-        }
-
-        if (particle.y <= 0 || particle.y >= height) {
-          particle.vy *= -1;
-          particle.y = Math.min(Math.max(particle.y, 0), height);
-        }
-
-        context.beginPath();
-        context.fillStyle = `rgba(${ACCENT_RGB}, 0.22)`;
-        context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        context.fill();
-      }
-
-      const linkDistance = mediaQuery.matches ? 110 : 140;
-
-      for (let i = 0; i < particles.length; i += 1) {
-        for (let j = i + 1; j < particles.length; j += 1) {
-          const a = particles[i];
-          const b = particles[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const distance = Math.hypot(dx, dy);
-
-          if (distance > linkDistance) {
-            continue;
+      for (const p of particles) {
+        // Mouse attraction
+        if (mx > 0 && my > 0) {
+          const dx = mx - p.x;
+          const dy = my - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < attractRadius && dist > 1) {
+            p.vx += (dx / dist) * attractStrength;
+            p.vy += (dy / dist) * attractStrength;
           }
+        }
 
-          const opacity = (1 - distance / linkDistance) * 0.2;
-          context.beginPath();
-          context.strokeStyle = `rgba(${ACCENT_RGB}, ${opacity})`;
-          context.lineWidth = 1;
-          context.moveTo(a.x, a.y);
-          context.lineTo(b.x, b.y);
-          context.stroke();
+        // Damping to prevent runaway velocity
+        p.vx *= 0.98;
+        p.vy *= 0.98;
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Bounce off edges
+        if (p.x < 0 || p.x > w) { p.vx *= -1; p.x = Math.max(0, Math.min(w, p.x)); }
+        if (p.y < 0 || p.y > h) { p.vy *= -1; p.y = Math.max(0, Math.min(h, p.y)); }
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${ACCENT_RGB}, 0.35)`;
+        ctx.fill();
+      }
+
+      // Lines between close particles
+      const linkDist = isMobile ? 100 : 130;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < linkDist) {
+            const opacity = (1 - dist / linkDist) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(${ACCENT_RGB}, ${opacity})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
         }
       }
 
-      if (!reducedMotion) {
-        animationFrame = window.requestAnimationFrame(draw);
+      // Lines from particles to cursor
+      if (mx > 0 && my > 0) {
+        for (const p of particles) {
+          const dx = p.x - mx;
+          const dy = p.y - my;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < attractRadius) {
+            const opacity = (1 - dist / attractRadius) * 0.2;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mx, my);
+            ctx.strokeStyle = `rgba(${ACCENT_RGB}, ${opacity})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
       }
+
+      if (!reducedMotion) raf = requestAnimationFrame(draw);
     };
 
-    reset();
-    draw();
+    const onMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mx = e.clientX - rect.left;
+      my = e.clientY - rect.top;
+    };
+    const onLeave = () => { mx = -9999; my = -9999; };
 
-    const resizeObserver = new ResizeObserver(() => {
-      reset();
-      if (reducedMotion) {
-        draw();
-      }
-    });
+    init();
+    raf = requestAnimationFrame(draw);
 
-    resizeObserver.observe(canvas);
-    mediaQuery.addEventListener('change', reset);
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseleave', onLeave);
+    window.addEventListener('resize', init);
 
     return () => {
-      resizeObserver.disconnect();
-      mediaQuery.removeEventListener('change', reset);
-      window.cancelAnimationFrame(animationFrame);
+      cancelAnimationFrame(raf);
+      canvas.removeEventListener('mousemove', onMove);
+      canvas.removeEventListener('mouseleave', onLeave);
+      window.removeEventListener('resize', init);
     };
   }, []);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className={`pointer-events-none h-full w-full ${className ?? 'absolute inset-0'}`} />;
+  return <canvas ref={canvasRef} aria-hidden="true" className={`h-full w-full ${className ?? 'absolute inset-0'}`} />;
 }
