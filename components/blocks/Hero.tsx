@@ -2,14 +2,14 @@ import Link from 'next/link';
 import {getTranslations} from 'next-intl/server';
 
 import {Button} from '@/components/ui/button';
-import {ParticleField} from '@/components/ui/ParticleField';
+
 
 export async function Hero({locale}: {locale: string}) {
   const t = await getTranslations({locale, namespace: 'Hero'});
 
   return (
     <section className="section-spacing relative overflow-hidden border-b border-border/70">
-      <ParticleField />
+      {/* Particle background handled at layout level */}
       <div className="container-shell relative grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div className="max-w-3xl space-y-8">
           <p className="eyebrow">{t('eyebrow')}</p>
