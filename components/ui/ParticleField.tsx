@@ -55,35 +55,45 @@ export function ParticleField({ className }: { className?: string }) {
 
       const mouseRadius = 160;
       const mouseStrength = 0.0015;
-      const peerRadius = 120;
-      const peerAttract = 0.0003; // very gentle pull between particles
-      const peerRepel = 0.002;    // push away if too close (< 25px)
+      const peerRadius = 150;
+      const G = 0.00008; // gravitational constant — mass-proportional
 
-      // Inter-particle forces — gentle attraction + close repulsion
+      // Inter-particle gravity — force proportional to mass (radius²), orbital dynamics
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i], b = particles[j];
           const dx = b.x - a.x;
           const dy = b.y - a.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < peerRadius && dist > 1) {
-            const nx = dx / dist;
-            const ny = dy / dist;
-            if (dist < 25) {
-              // Repel — too close
-              a.vx -= nx * peerRepel;
-              a.vy -= ny * peerRepel;
-              b.vx += nx * peerRepel;
-              b.vy += ny * peerRepel;
-            } else {
-              // Attract gently
-              const force = peerAttract * (1 - dist / peerRadius);
-              a.vx += nx * force;
-              a.vy += ny * force;
-              b.vx -= nx * force;
-              b.vy -= ny * force;
-            }
+          const distSq = dx * dx + dy * dy;
+          const dist = Math.sqrt(distSq);
+
+          if (dist > peerRadius || dist < 1) continue;
+
+          const nx = dx / dist;
+          const ny = dy / dist;
+
+          // Collision repulsion — only when overlapping
+          const minDist = a.radius + b.radius + 2;
+          if (dist < minDist) {
+            const repel = 0.003;
+            a.vx -= nx * repel;
+            a.vy -= ny * repel;
+            b.vx += nx * repel;
+            b.vy += ny * repel;
+            continue;
           }
+
+          // Gravitational attraction: F = G * m1 * m2 / d²
+          // mass ~ radius² (area), softened denominator to prevent spikes
+          const massA = a.radius * a.radius;
+          const massB = b.radius * b.radius;
+          const force = G * massA * massB / (distSq + 100); // +100 softening
+
+          // Apply force — heavier particles move less
+          a.vx += nx * force / massA;
+          a.vy += ny * force / massA;
+          b.vx -= nx * force / massB;
+          b.vy -= ny * force / massB;
         }
       }
 
