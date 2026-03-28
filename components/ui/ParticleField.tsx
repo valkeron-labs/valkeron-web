@@ -44,8 +44,8 @@ export function ParticleField({ className }: { className?: string }) {
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
         radius: 0.8 + Math.random() * 1.5,
       }));
     };
@@ -53,8 +53,8 @@ export function ParticleField({ className }: { className?: string }) {
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
 
-      const attractRadius = 200;
-      const attractStrength = 0.02;
+      const attractRadius = 160;
+      const attractStrength = 0.004;
 
       for (const p of particles) {
         // Mouse attraction
@@ -68,9 +68,9 @@ export function ParticleField({ className }: { className?: string }) {
           }
         }
 
-        // Damping to prevent runaway velocity
-        p.vx *= 0.98;
-        p.vy *= 0.98;
+        // Light damping — keeps drift alive
+        p.vx *= 0.997;
+        p.vy *= 0.997;
 
         p.x += p.vx;
         p.y += p.vy;
@@ -105,19 +105,19 @@ export function ParticleField({ className }: { className?: string }) {
         }
       }
 
-      // Lines from particles to cursor
+      // Subtle lines from particles to cursor
       if (mx > 0 && my > 0) {
         for (const p of particles) {
           const dx = p.x - mx;
           const dy = p.y - my;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < attractRadius) {
-            const opacity = (1 - dist / attractRadius) * 0.2;
+            const opacity = (1 - dist / attractRadius) * 0.08;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mx, my);
             ctx.strokeStyle = `rgba(${ACCENT_RGB}, ${opacity})`;
-            ctx.lineWidth = 0.8;
+            ctx.lineWidth = 0.4;
             ctx.stroke();
           }
         }
