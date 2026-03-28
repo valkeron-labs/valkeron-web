@@ -110,9 +110,7 @@ export function ParticleField({ className }: { className?: string }) {
           }
         }
 
-        // Minimal damping — barely slows, keeps organic drift alive forever
-        p.vx *= 0.999;
-        p.vy *= 0.999;
+        // No damping — conservation of energy, like real space
 
         // Gentle min speed — just enough to prevent total freeze, low enough to allow orbits
         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
@@ -121,12 +119,10 @@ export function ParticleField({ className }: { className?: string }) {
           p.vx = Math.cos(angle) * 0.05;
           p.vy = Math.sin(angle) * 0.05;
         }
-        // Soft cap — only damps above threshold, doesn't hard clamp
-        // Allows gravitational slingshots but prevents infinity
-        if (speed > 2) {
-          const damp = 2 / speed;
-          p.vx *= 0.95 + 0.05 * damp;
-          p.vy *= 0.95 + 0.05 * damp;
+        // Safety net only — prevents browser from choking
+        if (speed > 4) {
+          p.vx = (p.vx / speed) * 4;
+          p.vy = (p.vy / speed) * 4;
         }
 
         p.x += p.vx;
