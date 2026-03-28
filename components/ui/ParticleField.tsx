@@ -44,8 +44,8 @@ export function ParticleField({ className }: { className?: string }) {
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7,
         radius: 0.8 + Math.random() * 1.5,
       }));
     };
@@ -56,7 +56,7 @@ export function ParticleField({ className }: { className?: string }) {
       const mouseRadius = 160;
       const mouseStrength = 0.0015;
       const peerRadius = 200;
-      const G = 0.0006; // gravitational constant — visible orbital dynamics
+      const G = 0.003; // strong gravity — clearly visible orbital bending
 
       // Inter-particle gravity — force proportional to mass (radius²), orbital dynamics
       for (let i = 0; i < particles.length; i++) {
