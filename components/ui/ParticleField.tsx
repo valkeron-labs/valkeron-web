@@ -53,8 +53,39 @@ export function ParticleField({ className }: { className?: string }) {
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
 
-      const attractRadius = 160;
-      const attractStrength = 0.0015;
+      const mouseRadius = 160;
+      const mouseStrength = 0.0015;
+      const peerRadius = 120;
+      const peerAttract = 0.0003; // very gentle pull between particles
+      const peerRepel = 0.002;    // push away if too close (< 25px)
+
+      // Inter-particle forces — gentle attraction + close repulsion
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < peerRadius && dist > 1) {
+            const nx = dx / dist;
+            const ny = dy / dist;
+            if (dist < 25) {
+              // Repel — too close
+              a.vx -= nx * peerRepel;
+              a.vy -= ny * peerRepel;
+              b.vx += nx * peerRepel;
+              b.vy += ny * peerRepel;
+            } else {
+              // Attract gently
+              const force = peerAttract * (1 - dist / peerRadius);
+              a.vx += nx * force;
+              a.vy += ny * force;
+              b.vx -= nx * force;
+              b.vy -= ny * force;
+            }
+          }
+        }
+      }
 
       for (const p of particles) {
         // Gentle mouse attraction — capped so close distance doesn't cause burst
@@ -62,9 +93,8 @@ export function ParticleField({ className }: { className?: string }) {
           const dx = mx - p.x;
           const dy = my - p.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < attractRadius && dist > 30) {
-            // Constant gentle pull, not inversely proportional to distance
-            const force = attractStrength * (1 - dist / attractRadius);
+          if (dist < mouseRadius && dist > 30) {
+            const force = mouseStrength * (1 - dist / mouseRadius);
             p.vx += (dx / dist) * force;
             p.vy += (dy / dist) * force;
           }
