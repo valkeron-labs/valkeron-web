@@ -14,11 +14,30 @@ Marketing site for Valkeron built with Next.js 15 App Router, TypeScript, Tailwi
 ## Commands
 
 ```bash
-npm install
-npm run dev
-npm run build
-npm run start
+npm install       # Install dependencies
+npm run dev       # Dev server (hot reload)
+npm run build     # Production build
+npm run start     # Start production server
 ```
+
+## Deploy (PM2 on server)
+
+After pulling changes or making edits:
+
+```bash
+cd /home/zetoniak/code/valkeron-web
+npm run build && pm2 restart valkeron-web
+```
+
+This is required because PM2 serves the pre-built `.next/` output. Code changes
+(including CSS) won't be visible until you rebuild.
+
+| Step | What it does |
+|------|-------------|
+| `npm run build` | Compiles Next.js into `.next/` |
+| `pm2 restart valkeron-web` | Restarts the server to serve the new build |
+
+> **Tip:** If styles still look stale after restart, hard-refresh the browser with `Ctrl+Shift+R`.
 
 ## Environment variables
 
