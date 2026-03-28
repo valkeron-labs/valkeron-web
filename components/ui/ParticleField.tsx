@@ -152,8 +152,8 @@ export function ParticleField({ className }: { className?: string }) {
           const dx = p.x - mx;
           const dy = p.y - my;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < attractRadius) {
-            const opacity = (1 - dist / attractRadius) * 0.08;
+          if (dist < mouseRadius) {
+            const opacity = (1 - dist / mouseRadius) * 0.08;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mx, my);
