@@ -13,7 +13,7 @@ type Particle = {
 const ACCENT_RGB = '0, 180, 216';
 const MOBILE_BREAKPOINT = 768;
 
-export function ParticleField() {
+export function ParticleField({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -129,5 +129,5 @@ export function ParticleField() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />;
+  return <canvas ref={canvasRef} aria-hidden="true" className={`pointer-events-none h-full w-full ${className ?? 'absolute inset-0'}`} />;
 }
