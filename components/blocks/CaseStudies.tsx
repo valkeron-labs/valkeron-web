@@ -1,5 +1,7 @@
 import {getMessages, getTranslations} from 'next-intl/server';
 
+import {GlowCard} from '@/components/ui/GlowCard';
+
 export async function CaseStudies({locale}: {locale: string}) {
   const t = await getTranslations({locale, namespace: 'CaseStudies'});
   const messages = await getMessages({locale});
@@ -14,10 +16,10 @@ export async function CaseStudies({locale}: {locale: string}) {
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {items.map((item) => (
-            <article key={item.title} className="rounded-[1.5rem] border border-border/80 bg-background p-6 transition-colors hover:bg-card/70">
+            <GlowCard key={item.title} className="rounded-[1.5rem] border border-border/80 bg-background p-6 transition-colors hover:bg-card/70">
               <h3 className="text-xl font-semibold tracking-[-0.03em] text-primary">{item.title}</h3>
               <p className="mt-4 text-base leading-7 text-muted-foreground">{item.body}</p>
-            </article>
+            </GlowCard>
           ))}
         </div>
       </div>

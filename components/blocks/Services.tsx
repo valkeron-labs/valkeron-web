@@ -1,5 +1,7 @@
 import {getMessages, getTranslations} from 'next-intl/server';
 
+import {GlowCard} from '@/components/ui/GlowCard';
+
 export async function Services({locale}: {locale: string}) {
   const t = await getTranslations({locale, namespace: 'Services'});
   const messages = await getMessages({locale});
@@ -20,7 +22,7 @@ export async function Services({locale}: {locale: string}) {
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {cards.map((service, index) => (
-            <article key={service.name} className="flex h-full flex-col justify-between rounded-[1.5rem] border border-border/80 bg-card p-6 shadow-[0_20px_40px_-35px_rgba(10,22,40,0.55)]">
+            <GlowCard key={service.name} className="flex h-full flex-col justify-between rounded-[1.5rem] border border-border/80 bg-card p-6 shadow-[0_20px_40px_-35px_rgba(10,22,40,0.55)]">
               <div className="space-y-6">
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">0{index + 1}</p>
                 <div className="space-y-3">
@@ -29,7 +31,7 @@ export async function Services({locale}: {locale: string}) {
                 </div>
               </div>
               <p className="mt-8 border-t border-border/70 pt-5 text-sm font-medium text-foreground">{service.price}</p>
-            </article>
+            </GlowCard>
           ))}
         </div>
       </div>
