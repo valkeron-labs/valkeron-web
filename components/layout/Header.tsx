@@ -13,8 +13,8 @@ export async function Header({locale}: {locale: string}) {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-sm">
       <div className="container-shell flex min-h-18 items-center justify-between gap-4 py-4">
         <Link href={`/${locale}`} className="flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+          <Image src="/logo-dark.png" alt="Valkeron" width={28} height={28} className="dark:hidden" />
           <Image src="/logo-white.png" alt="Valkeron" width={28} height={28} className="hidden dark:block" />
-          <Image src="/logo-dark.png" alt="Valkeron" width={28} height={28} className="block dark:hidden" />
           <span className="text-lg font-semibold tracking-[0.16em] text-primary uppercase">Valkeron</span>
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
