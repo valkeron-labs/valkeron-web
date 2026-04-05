@@ -68,10 +68,98 @@
     ],
     "eyebrow": "Use cases"
   },
+  "HowWeWork": {
+    "title": "How we work",
+    "subtitle": "Five phases. No black boxes. You see everything.",
+    "eyebrow": "Methodology",
+    "phases": [
+      {
+        "number": "01",
+        "title": "Map",
+        "body": "We spend 2–3 weeks inside your operations. We audit your systems, data flows, and team workflows. We find the quick wins and the real transformation opportunities. You get a prioritised roadmap with estimated ROI — not a generic slide deck."
+      },
+      {
+        "number": "02",
+        "title": "Architect",
+        "body": "We design the agent system: what each agent does, how they communicate, what data they access, and how they're governed. We pick the right models — cloud, on-premise, or hybrid — based on your data sensitivity and budget. You approve the architecture before we write a single line of code."
+      },
+      {
+        "number": "03",
+        "title": "Build",
+        "body": "Iterative development with weekly demos. Multi-agent orchestration with built-in quality gates. Integration with your existing systems — ERP, CRM, ticketing, whatever you run. You see progress every week, not just at the end."
+      },
+      {
+        "number": "04",
+        "title": "Deploy",
+        "body": "Controlled rollout: shadow mode first, then pilot with a small team, then production. We train your people, set up monitoring, and make sure everything works before we step back."
+      },
+      {
+        "number": "05",
+        "title": "Evolve",
+        "body": "We stay. The agents improve based on real data. We identify new use cases proactively. Agent memory accumulates context over time — your system gets smarter the longer it runs. Monthly impact reports keep you informed."
+      }
+    ]
+  },
+  "Technology": {
+    "title": "What's under the hood",
+    "subtitle": "We don't just plug in APIs. We build the infrastructure that makes AI agents reliable at scale.",
+    "eyebrow": "Our technology",
+    "items": [
+      {
+        "title": "Multi-Agent Orchestration",
+        "body": "One agent can answer a question. A team of agents can run an operation. We build systems where specialised agents collaborate — each with its own role, capabilities, and quality gates. Think of it as a managed team that works 24/7 and never drops context."
+      },
+      {
+        "title": "Agent Memory",
+        "body": "Most AI systems start from zero every session. Ours don't. Our agents maintain persistent memory across interactions — they remember your customers, your processes, and the decisions made last week. This isn't just a nice feature. It's the difference between a demo and a production system."
+      },
+      {
+        "title": "Governed AI",
+        "body": "Every agent action passes through quality gates. Human-in-the-loop where it matters. Full audit trail for compliance. We don't \"deploy and pray\" — we build systems you can trust and explain to your board."
+      },
+      {
+        "title": "Infrastructure-Native",
+        "body": "We don't outsource the hard part. 18 years in systems engineering and 4 years inside AWS means we own the full stack — from model selection to networking to deployment. Your data stays where you want it."
+      }
+    ]
+  },
+  "Pricing": {
+    "title": "Pricing that shares the risk",
+    "body": "We don't believe in charging $200K for a system that might not work.\n\nOur pricing is hybrid: a predictable base for the work we do, plus a variable component tied to the results we deliver. If the agents save you money, we share in that. If they don't, you're not stuck with a massive bill and a shiny demo that nobody uses.",
+    "eyebrow": "Transparent pricing",
+    "tiers": [
+      {
+        "name": "Discovery & Assessment",
+        "price": "$5,000–8,000 AUD",
+        "period": "2–3 weeks",
+        "desc": "Operational audit, systems mapping, AI opportunity identification, prioritised roadmap with ROI estimates."
+      },
+      {
+        "name": "Agent Implementation",
+        "price": "$20,000–60,000 AUD",
+        "period": "6–12 weeks",
+        "desc": "Custom agent development, multi-agent orchestration, system integration, quality gates, controlled deployment."
+      },
+      {
+        "name": "Ongoing Partnership",
+        "price": "From $3,000 AUD/month",
+        "period": "+ outcome-based component",
+        "desc": "Continuous improvement, new use cases, agent memory enrichment, monthly impact reports, proactive optimisation."
+      }
+    ],
+    "cta": "Every engagement starts with a free 30-minute call."
+  },
   "About": {
     "title": "Why Valkeron",
     "body": "Most AI consultancies will sell you a chatbot and call it transformation.\n\nWe come from infrastructure. We've spent years building and running complex systems — networks, cloud architecture, enterprise software at scale. We know what it takes to make things actually work in production, not just in a demo.\n\nValkeron was built on a simple principle: AI should work with what you already have. Not replace it. Not require a 12-month migration project. Just connect, automate, and deliver results.\n\nWe work with a small number of clients at a time. That means you get direct access to the people who actually build your solution — and a partner who understands your business before writing a single line of code.",
-    "eyebrow": "Why Valkeron"
+    "eyebrow": "Why Valkeron",
+    "differentiators": [
+      "🔧 18 years in systems + 4 years inside AWS",
+      "🧠 Proprietary agent orchestration + persistent memory",
+      "🔒 Governed AI with quality gates and audit trails",
+      "💰 Outcome-aligned pricing — we share the risk",
+      "👤 Direct access to the builders, not account managers"
+    ]
   },
   "Contact": {
     "title": "Ready to see what's possible?",

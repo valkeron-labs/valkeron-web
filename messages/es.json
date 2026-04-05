@@ -68,10 +68,98 @@
     ],
     "eyebrow": "Casos de uso"
   },
+  "HowWeWork": {
+    "title": "Cómo trabajamos",
+    "subtitle": "Cinco fases. Sin cajas negras. Lo ves todo.",
+    "eyebrow": "Metodología",
+    "phases": [
+      {
+        "number": "01",
+        "title": "Mapear",
+        "body": "Pasamos 2-3 semanas dentro de tus operaciones. Auditamos sistemas, flujos de datos y workflows del equipo. Encontramos los quick wins y las oportunidades reales de transformación. Obtienes un roadmap priorizado con ROI estimado — no un deck genérico."
+      },
+      {
+        "number": "02",
+        "title": "Diseñar",
+        "body": "Diseñamos el sistema de agentes: qué hace cada uno, cómo se comunican, a qué datos acceden y cómo se gobiernan. Elegimos los modelos adecuados — cloud, on-premise o híbrido — según la sensibilidad de tus datos y tu presupuesto. Apruebas la arquitectura antes de que escribamos una sola línea de código."
+      },
+      {
+        "number": "03",
+        "title": "Construir",
+        "body": "Desarrollo iterativo con demos semanales. Orquestación multi-agente con quality gates integrados. Integración con tus sistemas existentes — ERP, CRM, ticketing, lo que uses. Ves el progreso cada semana, no solo al final."
+      },
+      {
+        "number": "04",
+        "title": "Desplegar",
+        "body": "Rollout controlado: primero shadow mode, luego piloto con un equipo reducido, luego producción. Formamos a tu equipo, configuramos el monitoring y nos aseguramos de que todo funciona antes de dar un paso atrás."
+      },
+      {
+        "number": "05",
+        "title": "Evolucionar",
+        "body": "Nos quedamos. Los agentes mejoran con datos reales. Identificamos nuevos casos de uso de forma proactiva. La memoria de los agentes acumula contexto con el tiempo — tu sistema se vuelve más inteligente cuanto más tiempo funciona. Informes mensuales de impacto te mantienen al día."
+      }
+    ]
+  },
+  "Technology": {
+    "title": "Qué hay debajo",
+    "subtitle": "No solo conectamos APIs. Construimos la infraestructura que hace que los agentes de IA sean fiables a escala.",
+    "eyebrow": "Nuestra tecnología",
+    "items": [
+      {
+        "title": "Orquestación Multi-Agente",
+        "body": "Un agente puede responder una pregunta. Un equipo de agentes puede operar un departamento. Construimos sistemas donde agentes especializados colaboran — cada uno con su rol, capacidades y quality gates. Piensa en un equipo gestionado que trabaja 24/7 y nunca pierde el contexto."
+      },
+      {
+        "title": "Memoria de Agentes",
+        "body": "La mayoría de sistemas de IA empiezan de cero en cada sesión. Los nuestros no. Nuestros agentes mantienen memoria persistente entre interacciones — recuerdan a tus clientes, tus procesos y las decisiones de la semana pasada. Esto no es un nice-to-have. Es la diferencia entre una demo y un sistema en producción."
+      },
+      {
+        "title": "IA Gobernada",
+        "body": "Cada acción de los agentes pasa por quality gates. Human-in-the-loop donde importa. Trazabilidad completa para compliance. No hacemos \"deploy and pray\" — construimos sistemas en los que puedes confiar y explicar a tu dirección."
+      },
+      {
+        "title": "Nativos de Infraestructura",
+        "body": "No subcontratamos la parte difícil. 18 años en ingeniería de sistemas y 4 años dentro de AWS significa que controlamos todo el stack — desde la selección del modelo hasta el networking y el despliegue. Tus datos se quedan donde tú quieras."
+      }
+    ]
+  },
+  "Pricing": {
+    "title": "Precios que comparten el riesgo",
+    "body": "No creemos en cobrar $200K por un sistema que puede no funcionar.\n\nNuestro pricing es híbrido: una base predecible por el trabajo que hacemos, más un componente variable atado a los resultados que entregamos. Si los agentes te ahorran dinero, compartimos ese ahorro. Si no, no te quedas con una factura enorme y una demo brillante que nadie usa.",
+    "eyebrow": "Precios transparentes",
+    "tiers": [
+      {
+        "name": "Diagnóstico y Evaluación",
+        "price": "$5,000–8,000 AUD",
+        "period": "2–3 semanas",
+        "desc": "Auditoría operativa, mapeo de sistemas, identificación de oportunidades de IA, roadmap priorizado con estimaciones de ROI."
+      },
+      {
+        "name": "Implementación de Agentes",
+        "price": "$20,000–60,000 AUD",
+        "period": "6–12 semanas",
+        "desc": "Desarrollo de agentes a medida, orquestación multi-agente, integración de sistemas, quality gates, despliegue controlado."
+      },
+      {
+        "name": "Colaboración Continua",
+        "price": "Desde $3,000 AUD/mes",
+        "period": "+ componente basado en resultados",
+        "desc": "Mejora continua, nuevos casos de uso, enriquecimiento de memoria de agentes, informes mensuales de impacto, optimización proactiva."
+      }
+    ],
+    "cta": "Todo empieza con una llamada gratuita de 30 minutos."
+  },
   "About": {
     "title": "Por qué Valkeron",
     "body": "La mayoría de consultoras de IA te venden un chatbot y lo llaman transformación.\n\nNosotros venimos de la infraestructura. Llevamos años construyendo y operando sistemas complejos — redes, arquitectura cloud, software empresarial a escala. Sabemos lo que hace falta para que las cosas funcionen en producción, no solo en una demo.\n\nValkeron nació con un principio claro: la IA debe trabajar con lo que ya tienes. No reemplazarlo. No requerir un proyecto de migración de 12 meses. Solo conectar, automatizar y entregar resultados.\n\nTrabajamos con un número reducido de clientes a la vez. Eso significa acceso directo a las personas que construyen tu solución — y un socio que entiende tu negocio antes de escribir una sola línea de código.",
-    "eyebrow": "Por qué Valkeron"
+    "eyebrow": "Por qué Valkeron",
+    "differentiators": [
+      "🔧 18 años en sistemas + 4 años dentro de AWS",
+      "🧠 Orquestación de agentes propia + memoria persistente",
+      "🔒 IA gobernada con quality gates y audit trail",
+      "💰 Pricing alineado a resultados — compartimos el riesgo",
+      "👤 Acceso directo a quienes construyen, no a account managers"
+    ]
   },
   "Contact": {
     "title": "¿Listo para ver lo que es posible?",
